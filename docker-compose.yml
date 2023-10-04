@@ -1,7 +1,6 @@
 version: '3'
 services:
   contability_api:
-    build: .
     ports:
       - "4002:3000"
     depends_on:
