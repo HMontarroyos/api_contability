@@ -52,6 +52,7 @@ Essa API foi desenvolvida inteiramente em NodeJS com o proposito, de receber pla
 [![Multer][Multer]][Multer-url]
 [![xlsx][xlsx]][xlsx-url]
 [![Jest][Jest]][Jest-url]
+[![Docker][Docker]][Docker-url]
 
 <br>
 
@@ -179,5 +180,8 @@ Essa  rota irá deletar uma planilha especifica definida pelo seu <i>id</i> no f
 [xlsx-url]: https://www.npmjs.com/package/xlsx
 [Jest]: https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white
 [Jest-url]: https://jestjs.io/pt-BR/
+[Docker]: https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white
+[Docker-url]: https://www.docker.com/
 [Postman]: https://img.shields.io/badge/Postman-gray?style=for-the-badge&logo=postman
 [Postman-url]: https://www.postman.com/
+
