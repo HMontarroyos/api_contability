@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import multer from "multer";
 import path from "path";
 import { TransactionService } from "../services";
-import { formatXlsxinJson } from "../server";
+
 
 const upload = multer({ dest: "uploads/" });
 
@@ -28,7 +28,6 @@ class TransactionController {
         }
 
         const filePath = req.file.path;
-        console.log("FILE PATH", req.file);
         const extname = path.extname(req.file.originalname);
 
         if (extname !== ".xlsx") {
@@ -37,17 +36,8 @@ class TransactionController {
             .json({ error: "The file must be of type xlsx." });
         }
 
-        try {
-          const responseData = await formatXlsxinJson(req.file.path);
-          console.log("RESPONDE DATA", responseData);
-          res.json(responseData);
-        } catch (error: any) {
-          console.error(error.message);
-          res.status(500).json({ error: "Internal Server Error" });
-        }
-
-        /*  await TransactionService.importTransactions(filePath); */
-        /* res.json({ message: "Transactions imported successfully" }); */
+        await TransactionService.importTransactions(filePath);
+        res.json({ message: "Transactions imported successfully" });
       });
     } catch (error: any) {
       res.status(400).send(error.message);
