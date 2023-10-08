@@ -8,7 +8,7 @@
 
 <br>
 
-<a href="#Contability API">Contability API</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="#API Contability">API Contability</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#Tecnologias-Utilizadas">Tecnologias Utilizadas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#Como-Instalar-o-Projeto">Como Instalar o Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#Como-usar">Como usar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -16,19 +16,22 @@
 
 <br>
 
-## <strong>Contability API</strong>
+## <strong>API Contability</strong>
 
 <br>
 
 <br>
 
-<img width="958" alt="postgree" src="https://github.com/HMontarroyos/ForTech/assets/60220406/333001cc-6a77-4473-8a16-72ee888762ba">
+<img width="958" alt="api_contability" src="https://github.com/HMontarroyos/api_contability/assets/60220406/129eeaf3-4c8c-4691-b62b-0042be48b0a4">
+
 
 <br/>
 <br/>
 <br/>
 
-Essa API foi desenvolvida inteiramente em NodeJS com o proposito, de receber planilhas de custos de clientes no formato XLSX, e após isso conferir se bate com as propriedades esperadas pelo modelo, caso confirma ela converte esses dados em uma espécie de JSON e salva no banco de dados que é o PostgreSQL, facilitando o gerenciamento e a visualização futura, também criei um endpoint que é possível deletar do banco alguma planilha caso seja necessário.
+Essa API foi desenvolvida em NodeJS em conjunto com outra API que eu desenvolvi em Python cujo link 
+se encontra <a href="https://github.com/HMontarroyos/api_convert_spreadsheet">aqui</a>, onde ela envia 
+uma planilha de custos de clientes no formato XLSX, e a API em Python lhe devolve um JSON dessa planilha que bate com as propriedades esperadas pelo modelo, após isso ela  salva no banco de dados que é o PostgreSQL. Facilitando o gerenciamento e a visualização futura, também criei um endpoint que é possível deletar do banco alguma planilha caso seja necessário e também listar todos os dados salvos no banco.
 
 <br/>
 <br/>
@@ -50,7 +53,6 @@ Essa API foi desenvolvida inteiramente em NodeJS com o proposito, de receber pla
 [![Dotenv][Dotenv]][Dotenv-url]
 [![Nodemon][Nodemon]][Nodemon-url]
 [![Multer][Multer]][Multer-url]
-[![xlsx][xlsx]][xlsx-url]
 [![Jest][Jest]][Jest-url]
 [![Docker][Docker]][Docker-url]
 
@@ -103,7 +105,11 @@ Feito todo os passos acima o seu servidor por default vai estar na rodando na po
 
 Para Fazer as chamadas dos endpoints da API seria necessario ter algum cliente servidor no meu caso eu usei o <i>Postman</i> mas qualquer um já serviria.
 
-<i>Estou usando a porta 4002 pois foi ela que defini no meu arquivo .env, você pode usar ela ou outra que definiu só não esqueça de alterar na chamada</i>
+<i>Estou usando a porta 4002 pois foi ela que defini no meu arquivo .env, você pode usar ela ou outra que definiu só não esqueça de alterar na chamada</i>.
+</br>
+Caso não tenha definido uma porta na sua variavel de ambiente <i>PORT</i> ele vai rodar
+na <b>porta 3001 por default</b>. 
+
 
 ### GET 
 
@@ -118,10 +124,12 @@ Essa  rota irá listar as planilhas salvas no nosso banco de Dados se você já 
 http://localhost:4002/contability/import
 
 <br/>
-Essa  rota é onde você vai enviar seu arquivo <i>.xlsx</i> e ele vai fazer essa conversão para o JSON e salvar no banco, caso de sucesso ele vai te devolver essa mensagem <i>Transactions imported successfully</i>.
+Essa  rota é onde você vai enviar seu arquivo <i>.xlsx</i> para a API de conversão em Python, e caso esteja tudo ok, ela vai lhe devolver um JSON, e com isso vai salvar no banco, caso de sucesso ele vai te devolver essa mensagem <i>Transactions imported successfully</i>.
 
 Mas para isso será necessario você enviar um arquivo valido e com os requisitos da API, com as propriedades da tabela a mesma do modelo, caso contrario a API vai te alertar informando algo no body o status code do error e a message dele.
-
+<br/>
+<i>A API desenvolvida no FastAPI em Python espera os mesmos dados no modelo.</i>
+<br/>
 Para testar eu deixei um arquivo .xlsx na pasta uploads na raiz do projeto onde você caso esteja usando o Postman por exemplo pode ir na opção <b>Body</b> e no <i>key</i> escrever file por exemplo e escolher do tipo <i>file</i> e no <i>Value</i> você seleciona o arquivo <b>TESTE_PLANILHA.xlsx</b> da pasta <i>uploads</i> e emvia. 
 </br>
 
@@ -141,14 +149,14 @@ Essa  rota irá deletar uma planilha especifica definida pelo seu <i>id</i> no f
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/HMontarroyos/contability_api.svg?style=for-the-badge
-[contributors-url]: https://github.com/HMontarroyos/contability_api/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/HMontarroyos/contability_api.svg?style=for-the-badge
-[forks-url]: https://github.com/HMontarroyos/contability_api/fork
-[stars-shield]: https://img.shields.io/github/stars/HMontarroyos/contability_api.svg?style=for-the-badge
-[stars-url]: https://github.com/HMontarroyos/contability_api/stargazers
-[issues-shield]: https://img.shields.io/github/issues/HMontarroyos/contability_api.svg?style=for-the-badge
-[issues-url]: https://github.com/HMontarroyos/contability_api/issues
+[contributors-shield]: https://img.shields.io/github/contributors/HMontarroyos/api_contability.svg?style=for-the-badge
+[contributors-url]: https://github.com/HMontarroyos/api_contability/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/HMontarroyos/api_contability.svg?style=for-the-badge
+[forks-url]: https://github.com/HMontarroyos/api_contability/fork
+[stars-shield]: https://img.shields.io/github/stars/HMontarroyos/api_contability.svg?style=for-the-badge
+[stars-url]: https://github.com/HMontarroyos/api_contability/stargazers
+[issues-shield]: https://img.shields.io/github/issues/HMontarroyos/api_contability.svg?style=for-the-badge
+[issues-url]: https://github.com/HMontarroyos/api_contability/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/hebertmontarroyos-developer/
 
@@ -176,8 +184,6 @@ Essa  rota irá deletar uma planilha especifica definida pelo seu <i>id</i> no f
 [Nodemon-url]: https://www.npmjs.com/package/nodemon
 [Multer]: https://img.shields.io/badge/Multer-black?style=for-the-badge
 [Multer-url]: https://www.npmjs.com/package/multer
-[xlsx]: https://img.shields.io/badge/xlsx-%23white.svg?style=for-the-badge
-[xlsx-url]: https://www.npmjs.com/package/xlsx
 [Jest]: https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white
 [Jest-url]: https://jestjs.io/pt-BR/
 [Docker]: https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white
