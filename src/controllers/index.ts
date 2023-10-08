@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import multer from "multer";
 import path from "path";
+import fs from "fs";
 import { TransactionService } from "../services";
 
 
@@ -37,6 +38,12 @@ class TransactionController {
         }
 
         await TransactionService.importTransactions(filePath);
+        
+        fs.unlink(filePath, (err) => {
+          if (err) {
+            console.error("Error deleting temporary file:", err);
+          }
+        });
         res.json({ message: "Transactions imported successfully" });
       });
     } catch (error: any) {
