@@ -107,8 +107,12 @@ Para Fazer as chamadas dos endpoints da API seria necessario ter algum cliente s
 
 <i>Estou usando a porta 4002 pois foi ela que defini no meu arquivo .env, você pode usar ela ou outra que definiu só não esqueça de alterar na chamada</i>.
 </br>
+<br>
+<br>
 Caso não tenha definido uma porta na sua variavel de ambiente <i>PORT</i> ele vai rodar
 na <b>porta 3001 por default</b>. 
+<br>
+<br>
 
 
 ### GET 
