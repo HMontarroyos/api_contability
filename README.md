@@ -141,6 +141,14 @@ http://localhost:4002/contability/transactions/:id
 Essa  rota irá deletar uma planilha especifica definida pelo seu <i>id</i> no final do /:id é so substituir pelo id em questão e ao submeter ele será deletado do banco, caso não exista o id ou já estiver sido deletado ele vai lhe alertar com uma mensagem no body, caso exista ele será deletado e você verá a mensagem informando que foi deletado junto a um status code 200
 </br>
 
+#### Testes 
+
+Caso queira rodar os testes para vê se está tudo correto pode executar o seguinte comando 
+
+```sh
+npm test
+```
+que o Jest vai executar os tests que foram criados para ele.
 
 <br>
 
