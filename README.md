@@ -127,9 +127,11 @@ http://localhost:4002/contability/import
 Essa  rota é onde você vai enviar seu arquivo <i>.xlsx</i> para a API de conversão em Python, e caso esteja tudo ok, ela vai lhe devolver um JSON, e com isso vai salvar no banco, caso de sucesso ele vai te devolver essa mensagem <i>Transactions imported successfully</i>.
 
 Mas para isso será necessario você enviar um arquivo valido e com os requisitos da API, com as propriedades da tabela a mesma do modelo, caso contrario a API vai te alertar informando algo no body o status code do error e a message dele.
-<br/>
+
+<br>
 <i>A API desenvolvida no FastAPI em Python espera os mesmos dados no modelo.</i>
-<br/>
+<br>
+<br>
 Para testar eu deixei um arquivo .xlsx na pasta uploads na raiz do projeto onde você caso esteja usando o Postman por exemplo pode ir na opção <b>Body</b> e no <i>key</i> escrever file por exemplo e escolher do tipo <i>file</i> e no <i>Value</i> você seleciona o arquivo <b>TESTE_PLANILHA.xlsx</b> da pasta <i>uploads</i> e emvia. 
 </br>
 
