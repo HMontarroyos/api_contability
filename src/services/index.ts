@@ -8,7 +8,7 @@ class TransactionService {
       const responseData = await formatXlsxinJson(filePath);
       const transaction = responseData.data
       transaction.forEach(async (transaction: any) => {
-        if (transaction.id === null) {
+        if (transaction.id === null || transaction.id === "nan") {
           transaction.id = uuidv4();
         }
         
