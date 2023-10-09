@@ -3,7 +3,8 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 import { TransactionService } from "../services";
-
+import { ApiError } from "../errors/ApiError";
+import { validateError } from "../errors/ValidateError";
 
 const upload = multer({ dest: "uploads/" });
 
@@ -12,8 +13,8 @@ class TransactionController {
     try {
       const transactions = await TransactionService.getAllTransactions();
       res.json(transactions);
-    } catch (error) {
-      res.status(500).json({ error: "Internal Server Error" });
+    } catch (error: unknown) {
+      validateError(error, res);
     }
   }
 
@@ -21,24 +22,26 @@ class TransactionController {
     try {
       upload.single("file")(req, res, async (err) => {
         if (err) {
-          return res.status(400).json({ error: "Error uploading file" });
+          throw new ApiError("UploadingFileError", 400, "Error uploading file");
         }
 
         if (!req.file || !req.file.path) {
-          return res.status(400).json({ error: "No file uploaded" });
+          throw new ApiError("NoFileUploadedError", 400, "No file uploaded");
         }
 
         const filePath = req.file.path;
         const extname = path.extname(req.file.originalname);
 
         if (extname !== ".xlsx") {
-          return res
-            .status(400)
-            .json({ error: "The file must be of type xlsx." });
+          throw new ApiError(
+            "MimeTypeError",
+            400,
+            "The file must be of type xlsx."
+          );
         }
 
         await TransactionService.importTransactions(filePath);
-        
+
         fs.unlink(filePath, (err) => {
           if (err) {
             console.error("Error deleting temporary file:", err);
@@ -46,8 +49,8 @@ class TransactionController {
         });
         res.json({ message: "Transactions imported successfully" });
       });
-    } catch (error: any) {
-      res.status(400).send(error.message);
+    } catch (error: unknown) {
+      validateError(error, res);
     }
   }
 
@@ -57,15 +60,16 @@ class TransactionController {
       const deletedCount = await TransactionService.deleteTransaction(id);
 
       if (deletedCount === 0) {
-        res
-          .status(404)
-          .json({ error: `Transaction with ID ${id} does not exist` });
-        return;
+        throw new ApiError(
+          "DeletedCountError",
+          404,
+          `Transaction with ID ${id} does not exist`
+        );
       }
 
       res.json({ message: "Transaction deleted successfully" });
     } catch (error) {
-      res.status(500).json({ error: "Internal Server Error" });
+      validateError(error, res);
     }
   }
 }

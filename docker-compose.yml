@@ -2,12 +2,23 @@ version: '3'
 services:
   contability_api:
     ports:
-      - "4002:3000"
+      - "4002:3001"
     depends_on:
       - db
     env_file:
       - .env
-    image: hmontarroyos/api_contability
+    image: hmontarroyos/api_contability:v1.0.0
+    environment:
+      POSTGRES_USER: ${POSTGRES_USERNAME} 
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DATABASE}
+      POSTGRES_HOST: db
+      PORT: 4002
+      URL_CONVERT_SPREADSHEET: http://convert_spreadsheet_api:4005/
+  convert_spreadsheet_api:
+    env_file:
+      - .env
+    image: hmontarroyos/api_convert_spreadsheet:v1.0.0
   db:
     image: postgres:latest
     environment:
