@@ -107,8 +107,12 @@ Para Fazer as chamadas dos endpoints da API seria necessario ter algum cliente s
 
 <i>Estou usando a porta 4002 pois foi ela que defini no meu arquivo .env, você pode usar ela ou outra que definiu só não esqueça de alterar na chamada</i>.
 </br>
+<br>
+<br>
 Caso não tenha definido uma porta na sua variavel de ambiente <i>PORT</i> ele vai rodar
 na <b>porta 3001 por default</b>. 
+<br>
+<br>
 
 
 ### GET 
@@ -132,7 +136,7 @@ Mas para isso será necessario você enviar um arquivo valido e com os requisito
 <i>A API desenvolvida no FastAPI em Python espera os mesmos dados no modelo.</i>
 <br>
 <br>
-Para testar eu deixei um arquivo .xlsx na pasta uploads na raiz do projeto onde você caso esteja usando o Postman por exemplo pode ir na opção <b>Body</b> e no <i>key</i> escrever file por exemplo e escolher do tipo <i>file</i> e no <i>Value</i> você seleciona o arquivo <b>TESTE_PLANILHA.xlsx</b> da pasta <i>uploads</i> e emvia. 
+Para testar eu deixei um arquivo .xlsx na pasta uploads na raiz do projeto onde você caso esteja usando o Postman por exemplo pode ir na opção <b>Body</b> e no <i>key</i> escrever file por exemplo e escolher do tipo <i>file</i> e no <i>Value</i> você seleciona o arquivo <b>TESTE_PLANILHA.xlsx</b> da pasta <i>uploads</i> e envia. 
 </br>
 
 ### DELETE 
