@@ -82,9 +82,10 @@ POSTGRES_USERNAME=''
 POSTGRES_PASSWORD=''
 POSTGRES_HOST=localhost
 PORT= 4002
+URL_CONVERT_SPREADSHEET=''
 ```
 
-Substituindo pelas informações suas como o nome do seu <b>Database</b>, <b>Username</b> e <b>Password</b>, o <b>Host</b> e <b>Port</b> você pode deixar ou alterar da maneira que desejar. 
+Substituindo pelas informações suas como o nome do seu <b>Database</b>, <b>Username</b> e <b>Password</b>, o <b>Host</b>, <b>Port</b>, e <b>Url Convert SpreadSheet </b> você pode deixar ou alterar da maneira que desejar. 
 
 Você também vai precisar ter o banco <i>PostgreSQL</i>, instalado na sua maquina rodando na porta dele, para isso você pode baixar ele para o seu ambiente de desenvolvimento através desse <a href="https://www.postgresql.org/download/">Link</a>
 
@@ -105,12 +106,12 @@ Feito todo os passos acima o seu servidor por default vai estar na rodando na po
 
 Para Fazer as chamadas dos endpoints da API seria necessario ter algum cliente servidor no meu caso eu usei o <i>Postman</i> mas qualquer um já serviria.
 
-<i>Estou usando a porta 4002 pois foi ela que defini no meu arquivo .env, você pode usar ela ou outra que definiu só não esqueça de alterar na chamada</i>.
+<i>Estou usando a porta 4002 pois foi ela que defini no meu arquivo .env e caso não passe outra ela está como default, você pode usar ela ou outra que definiu só não esqueça de alterar na chamada</i>.
 </br>
 <br>
 <br>
 Caso não tenha definido uma porta na sua variavel de ambiente <i>PORT</i> ele vai rodar
-na <b>porta 3001 por default</b>. 
+na <b>porta 4002 por default</b>. 
 <br>
 <br>
 
@@ -157,6 +158,22 @@ npm test
 que o Jest vai executar os tests que foram criados para ele.
 
 <br>
+
+### Dockerizar 
+
+Parar criar o container da aplicação esubir posteriomente em um Docker hub por exemplo ou usar localmente é so rodar o seguinte comando para criar a imagem da nossa API
+
+```docker
+docker build -t
+
+```
+após ter criado ela e também ter dockerizado a API nossa em <a href="https://github.com/HMontarroyos/api_convert_spreadsheet">Python</a>, está no hora de subir nosso compose para ele conectar nossos container de API e do nosso banco Postgree, para isso você rodará o comando:
+
+```docker
+docker compose up
+
+```
+
 
 ### 🚀 Let's code! 🚀
 
