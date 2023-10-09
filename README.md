@@ -164,7 +164,7 @@ que o Jest vai executar os tests que foram criados para ele.
 Parar criar o container da aplicação esubir posteriomente em um Docker hub por exemplo ou usar localmente é so rodar o seguinte comando para criar a imagem da nossa API
 
 ```docker
-docker build -t
+docker build -t NOME_DA_IMAGEM
 
 ```
 após ter criado ela e também ter dockerizado a API nossa em <a href="https://github.com/HMontarroyos/api_convert_spreadsheet">Python</a>, está no hora de subir nosso compose para ele conectar nossos container de API e do nosso banco Postgree, para isso você rodará o comando:
