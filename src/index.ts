@@ -1,10 +1,10 @@
-import { sequelize } from './config/database';
-import app from './app';
+import { sequelize } from "./config/database";
+import app from "./app";
 
-const PORT = process.env.PORT || 3001;
+const PORT = Number(process.env.PORT) || 4002;
 
 sequelize.sync().then(() => {
-  app.listen(PORT, () => {
+  app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server is running on ${PORT}`);
   });
 });
