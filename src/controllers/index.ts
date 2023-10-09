@@ -4,7 +4,6 @@ import path from "path";
 import fs from "fs";
 import { TransactionService } from "../services";
 
-
 const upload = multer({ dest: "uploads/" });
 
 class TransactionController {
@@ -38,7 +37,7 @@ class TransactionController {
         }
 
         await TransactionService.importTransactions(filePath);
-        
+
         fs.unlink(filePath, (err) => {
           if (err) {
             console.error("Error deleting temporary file:", err);

@@ -1,8 +1,11 @@
 import axios from "axios";
 import fs from "fs";
 import FormData from "form-data";
+import { config as dotenvConfig } from "dotenv";
 
-const url = "http://localhost:4005/";
+dotenvConfig();
+
+const url = process.env.URL_CONVERT_SPREADSHEET;
 
 async function formatXlsxinJson(filePath: fs.PathLike) {
   try {
